@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InternalStorage"></activity>
+        <activity android:name=".ExternalStorage"></activity>
+        <activity android:name=".InternalStorage" />
         <activity android:name=".sharedPreference" />
         <activity android:name=".MainActivity">
             <intent-filter>
