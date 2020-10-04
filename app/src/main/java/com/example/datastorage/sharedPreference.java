@@ -46,14 +46,8 @@ TextView readName;
         });
     }
 
-    private void readFile(){
-        SharedPreferences sharedPreferences = getSharedPreferences(FileName, Context.MODE_PRIVATE);
-        String defaultValue = "DefaultValue";
-        String name = sharedPreferences.getString("name",defaultValue);
-        readName.setText(name);
-        Toast.makeText(this, "Data: "+name, Toast.LENGTH_LONG).show();
-    }
 
+    //save file
     private void saveFile(){
         String strName = editName.getText().toString();
         SharedPreferences sharedPreferences = getSharedPreferences(FileName,Context.MODE_PRIVATE);
@@ -62,4 +56,14 @@ TextView readName;
         editor.commit();
         Toast.makeText(this, "Data saved succesfully", Toast.LENGTH_SHORT).show();
     }
+
+    //read file
+    private void readFile(){
+        SharedPreferences sharedPreferences = getSharedPreferences(FileName, Context.MODE_PRIVATE);
+        String defaultValue = "DefaultValue";
+        String name = sharedPreferences.getString("name",defaultValue);
+        readName.setText(name);
+        Toast.makeText(this, "Data: "+name, Toast.LENGTH_LONG).show();
+    }
+
 }
