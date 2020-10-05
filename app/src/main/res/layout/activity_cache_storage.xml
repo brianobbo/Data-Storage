@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    tools:context=".ExternalStorage">
+    tools:context=".CacheStorage">
 
     <EditText
-        android:id="@+id/etNameExternal"
+        android:id="@+id/etNameCache"
         android:layout_marginTop="50dp"
         android:hint="enter name"
         android:layout_width="match_parent"
@@ -23,12 +23,12 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/buSaveFileExternal"
+            android:id="@+id/buSaveFileCache"
             android:text="SAVE TO FILE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <Button
-            android:id="@+id/buReadFileExternal"
+            android:id="@+id/buReadFileCache"
             android:text="READ TO FILE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -36,7 +36,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvReadTxtExternal"
+        android:id="@+id/tvReadTxtCache"
         android:layout_marginTop="10dp"
         android:text="Read saved Text"
         android:layout_width="match_parent"

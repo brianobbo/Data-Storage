@@ -25,7 +25,7 @@ import java.io.InputStreamReader;
 public class ExternalStorage extends AppCompatActivity {
 
     public static final int PERMISION_WRITE_EXTERNAL_STORAGE = 123;
-    String FileNameExternal = "myFile";
+    String FileNameExternal = "myFileExternal";
     Button buttonSaveNameFileNameExternal;
     Button buttonReadNameFileNameExternal;
     EditText editNameFileNameExternal;
@@ -90,8 +90,11 @@ public class ExternalStorage extends AppCompatActivity {
             myDir.mkdirs();
             File file = new File(myDir, FileNameExternal); **/
 
-            //To save file directly in the root
-            File file = new File(Environment.getExternalStorageDirectory(), FileNameExternal);
+            //To save file directly in the root and not removed when your app is uninstalled
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), FileNameExternal);
+
+            //To save file directly in the root and should be  removed when your app is uninstalled
+            /**File file = new File(Environment.getExternalStorageDirectory(), FileNameExternal);**/
 
             //below code the same as internal storage
             //FileOutputStream fileOutputStream = openFileOutput(FileNameExternal, Context.MODE_PRIVATE);
@@ -99,7 +102,7 @@ public class ExternalStorage extends AppCompatActivity {
             name = editNameFileNameExternal.getText().toString();
             fileOutputStream.write(name.getBytes());
             fileOutputStream.close();
-            Toast.makeText(this, "Data saved to internal", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Data saved to External", Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -115,8 +118,12 @@ public class ExternalStorage extends AppCompatActivity {
              myDir.mkdirs();
              File file = new File(myDir, FileNameExternal); **/
 
-            //To save file directly in the root
-            File file = new File(Environment.getExternalStorageDirectory(), FileNameExternal);
+            //To save file directly in the root and not removed when your app is uninstalled
+            File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), FileNameExternal);
+
+
+            //To save file directly in the root and should be  removed when your app is uninstalled
+             /**File file = new File(Environment.getExternalStorageDirectory(), FileNameExternal);**/
 
             //below code the same as internal storage
             //FileInputStream fileInputStream = openFileInput(FileNameExternal);
@@ -131,7 +138,7 @@ public class ExternalStorage extends AppCompatActivity {
             fileInputStream.close();
             inputStreamReader.close();
             readNameFileNameExternal.setText(stringBuilder.toString());
-            Toast.makeText(this, "Data retrieved from Internal: "+stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Data retrieved from External: "+stringBuilder.toString(), Toast.LENGTH_SHORT).show();
 
         }catch (Exception e){
             e.printStackTrace();

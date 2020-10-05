@@ -11,65 +11,69 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class InternalStorage extends AppCompatActivity {
+public class CacheStorage extends AppCompatActivity {
 
-    String FileNameInternal = "myFileInternal";
-    Button buttonSaveNameInternal;
-    Button buttonReadNameInternal;
-    EditText editNameInternal;
-    TextView readNameInternal;
+    String FileNameCache = "myFileCache";
+    Button buttonSaveNameCache;
+    Button buttonReadNameCache;
+    EditText editNameCache;
+    TextView readNameCache;
     String name;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_internal_storage);
+        setContentView(R.layout.activity_cache_storage);
 
-        editNameInternal = findViewById(R.id.etNameInternal);
-        readNameInternal = findViewById(R.id.tvReadTxtInternal);
-        buttonSaveNameInternal =findViewById(R.id.buSaveFileInternal);
-        buttonReadNameInternal =findViewById(R.id.buReadFileInternal);
+        editNameCache = findViewById(R.id.etNameCache);
+        readNameCache = findViewById(R.id.tvReadTxtCache);
+        buttonSaveNameCache =findViewById(R.id.buSaveFileCache);
+        buttonReadNameCache =findViewById(R.id.buReadFileCache);
 
-        buttonSaveNameInternal.setOnClickListener(new View.OnClickListener() {
+        buttonSaveNameCache.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveFileInternal();
+                saveFileCache();
             }
         });
 
-        buttonReadNameInternal.setOnClickListener(new View.OnClickListener() {
+        buttonReadNameCache.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readFileInternal();
+                readFileCache();
             }
         });
 
     }
 
     //saving file to internal
-    private void saveFileInternal(){
+    private void saveFileCache(){
         try {
-            FileOutputStream fileOutputStream = openFileOutput(FileNameInternal, Context.MODE_PRIVATE);
-            name = editNameInternal.getText().toString();
+            //append data to the file
+            File file = new File(getCacheDir(), FileNameCache);
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            name = editNameCache.getText().toString();
             fileOutputStream.write(name.getBytes());
             fileOutputStream.close();
-            Toast.makeText(this, "Data saved to internal", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Data saved to Cache", Toast.LENGTH_SHORT).show();
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     //reading file from internal
-    private  void readFileInternal(){
+    private  void readFileCache(){
         try {
 
-            FileInputStream fileInputStream = openFileInput(FileNameInternal);
+            File file = new File(getCacheDir(), FileNameCache);
+            FileInputStream fileInputStream = new FileInputStream(file);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             StringBuilder stringBuilder = new StringBuilder();
@@ -79,7 +83,7 @@ public class InternalStorage extends AppCompatActivity {
             }
             fileInputStream.close();
             inputStreamReader.close();
-            readNameInternal.setText(stringBuilder.toString());
+            readNameCache.setText(stringBuilder.toString());
             Toast.makeText(this, "Data retrieved from Internal: "+stringBuilder.toString(), Toast.LENGTH_SHORT).show();
 
         }catch (Exception e){
