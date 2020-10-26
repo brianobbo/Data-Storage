@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SQL.SQLiteInsertReadUpdateDelete">
+
+    <EditText
+        android:id="@+id/etName"
+        android:hint="NAME"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/etSurName"
+        android:hint="SURNAME"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/etMarks"
+        android:hint="MARKS"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/buInsert"
+            android:text="INSERT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/buRead"
+            android:text="READ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/buUdate"
+            android:text="update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/buDelete"
+            android:text="delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvRead"
+            android:hint="Data read"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
+
+
+</LinearLayout>
